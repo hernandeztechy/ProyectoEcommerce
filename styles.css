@@ -1,0 +1,50 @@
+body
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:0;
+    background-color: #26262c;
+}
+#top
+{
+    color:#CB5235; /*text color*/
+    height: 50px;
+    background-color: 26262c;
+    text-align: center;
+    padding: 0;
+}
+
+#cuerpo
+{
+    height: 500px;
+    background-image:  url("/Img/oleksii-s-O2kqxbix4Mw-unsplash.jpg");
+    background-size: 1920px 1173px; /*original image size*/
+    background-position: center;
+    text-align: center;
+    padding: 50px;
+    color: #26262c;
+}
+
+#end
+{
+    height: 50px;
+    background-color: #26262c;
+    vertical-align: bottom;
+    color: #CB5235;
+    text-align: center;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px; /*15px 120px   1 vertical 2 horizontal*/
+    width: 350px; /*le doy tamaño fijo a los botones*/
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: rgba(59, 59, 59, 0.767);
+    border-radius: 10px;
+    margin: 10px;
+  }
