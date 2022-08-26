@@ -20,34 +20,39 @@ header
     justify-content: space-between;
     align-items: center;
     padding: 10px 10%;
-
+    background-color: #2e2e33;
 }
 
 .logo
 {
     cursor: pointer;
     height: 65px;
+    background-color: transparent;
 }
 
 .nav_links
 {
     list-style: none;
+    background-color: #2e2e33;
 }
 
 .nav_links li
 {
     display: inline-block; /*side by side*/
     padding: 0px 20px;
+    background-color: transparent;
 }
 
 .nav_links li a
 {
     transition: all 0.3s ease 0s;
+    background-color: transparent;
 }
 
 .nav_links li a:hover
 {
     color:#D8442B;
+    background-color: transparent;
 }
 
 #btnSesion
@@ -79,22 +84,35 @@ header
     font-size:45px;
 }
 
+#nav_left
+{background-color: transparent;}
+
+.cta
+{background-color: transparent;}
+
+#cardIcon
+{background-color: #2e2e33;}
+
+.btnIcon
+{background-color: #2e2e33;}
+
 /* ----------------------------------------------- */
 
-#cuerpo
+/* #cuerpo
 {
     height: 500px;
     background-image:  url("/Img/oleksii-s-O2kqxbix4Mw-unsplash.jpg");
-    background-size: 1920px 1173px; /*original image size*/
+    background-size: 1920px 1173px; /*original image size
     background-position: center;
     text-align: center;
     padding: 50px;
     color: #26262c;
-}
+    background-color: transparent;
+} */
 
 #end
 {
-    height: 50px;
+    height: auto;
     background-color: #26262c;
     vertical-align: bottom;
     color: #CB5235;
@@ -108,18 +126,95 @@ header
     background-color: transparent;
 }
 
-.button {
+
+
+
+  /* -------------------CARDS---------------------------- */
+  .card
+  {
+    width: 330px;
+    background-color: #D8442B;
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    transform: translate(-35%,-20%);
+  }
+
+  .top-section
+  {
+    height: 430px;
+    overflow: hidden;
+    background-color: #D8442B;
+    position: relative;
+  }
+
+  #image-container /*adjust the image to the size of the space*/
+  {
+    width: 330px;
+    height: 430px;
+  }
+
+  .price
+  {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #D8442B;
+    background-color: transparent;
+    font-size: 24px;
+  }
+
+  .product-info
+  {
+    padding: 24px;
+    background-color: #D8442B;
+  }
+
+  .selection
+  {
+    text-transform: uppercase;
+    font-size: 24px;
+    color: white;
+    background-color: transparent;
+  }
+
+  .position
+  {
+    font-size: 18px;
+    color:rgba(255, 255, 255, 0.671);
+    background-color: transparent;
+  }
+
+  .year
+  {
+    font-size: 18px;
+    color:rgba(255, 255, 255, 0.671);
+    background-color: transparent;
+  }
+
+  .btn_Buy {
     border: none;
     color: white;
-    padding: 15px; /*15px 120px   1 vertical 2 horizontal*/
-    width: 350px; /*le doy tamaño fijo a los botones*/
+    padding: 10px; /*15px 120px   1 vertical 2 horizontal*/
+    width: 282px; /*le doy tamaño fijo a los botones*/
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin-top: 10px;
     cursor: pointer;
-    background-color: rgba(59, 59, 59, 0.767);
+    background-color: #26262c;
     border-radius: 10px;
-    margin: 10px;
+    align-items: center;
+    padding-bottom: 13px;
+    transition: 0.3s;
   }
+
+  .btn_Buy:hover
+  {
+    background-color: #1a1a1b;
+    color: #D8442B;
+  }
+
+  /* ----------------------------------------------- */
+  /* ----------------------------------------------- */
+  /* ----------------------------------------------- */

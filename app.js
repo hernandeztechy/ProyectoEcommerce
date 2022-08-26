@@ -30,6 +30,17 @@ const NBA_AllStars =
 //arreglo para registrar a los usuarios
 const Usuarios = []
 
+
+const nav_Teams = document.getElementById("nav_Teams");
+nav_Teams.onclick = TeamsUnique;
+
+const nav_Player =document.getElementById("nav_Player");
+//nav_Player.onclick = get players by year
+
+const nav_Position = document.getElementById("nav_Position");
+//nav_Position.onclick = get available positions
+
+
 //registra nombre de usuario en el arreglo
 function RegUsuario()
 {
@@ -83,3 +94,4 @@ function TeamsUnique()
     }
     console.log(equipos)
 }
+
