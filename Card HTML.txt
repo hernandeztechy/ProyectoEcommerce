@@ -1,0 +1,12 @@
+<div class="card">
+                <div class="top-section">
+                    <img id="image-container" src="/Img/StephenCurry.png" alt="">
+                    <div class="price">$40</div>
+                </div>
+                <div class="product-info">
+                    <div class="selection">Western</div>
+                    <div class="position">Guard</div>
+                    <div class="year">2016</div>
+                    <button class="btn_Buy">Agregar al carrito</button>
+                </div>
+            </div>
