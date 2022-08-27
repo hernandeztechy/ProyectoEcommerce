@@ -98,17 +98,11 @@ header
 
 /* ----------------------------------------------- */
 
-/* #cuerpo
+#cuerpo
 {
-    height: 500px;
-    background-image:  url("/Img/oleksii-s-O2kqxbix4Mw-unsplash.jpg");
-    background-size: 1920px 1173px; /*original image size
-    background-position: center;
-    text-align: center;
-    padding: 50px;
-    color: #26262c;
-    background-color: transparent;
-} */
+    margin: 0% 6%;
+    transform: perspective(0%, 6%);
+}
 
 #end
 {
@@ -127,22 +121,28 @@ header
 }
 
 
+  /* ------------------TABLE----------------------------- */
 
+  table
+  {
+    margin: 20px 0px;
+  }
+
+  td
+  {
+    padding: 20px;
+  }
 
   /* -------------------CARDS---------------------------- */
   .card
   {
-    width: 330px;
+    width: 230px;
     background-color: #D8442B;
-    position: absolute;
-    top: 35%;
-    left: 20%;
-    transform: translate(-35%,-20%);
   }
 
   .top-section
   {
-    height: 430px;
+    height: 310px;
     overflow: hidden;
     background-color: #D8442B;
     position: relative;
@@ -150,15 +150,15 @@ header
 
   #image-container /*adjust the image to the size of the space*/
   {
-    width: 330px;
-    height: 430px;
+    width: 230px;
+    height: 310px;
   }
 
   .price
   {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     color: #D8442B;
     background-color: transparent;
     font-size: 24px;
@@ -166,7 +166,7 @@ header
 
   .product-info
   {
-    padding: 24px;
+    padding: 10px 24px;
     background-color: #D8442B;
   }
 
@@ -196,7 +196,7 @@ header
     border: none;
     color: white;
     padding: 10px; /*15px 120px   1 vertical 2 horizontal*/
-    width: 282px; /*le doy tamaño fijo a los botones*/
+    width: 182px; /*le doy tamaño fijo a los botones*/
     text-align: center;
     text-decoration: none;
     font-size: 16px;
