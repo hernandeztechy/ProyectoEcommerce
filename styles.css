@@ -35,13 +35,14 @@
   transition: all 0.3s;
 }
 
-.dropdown_teams.active > .link,
+.dropdown_teams.active > .link, 
+.dropdown_pos.active > .link,
 .link:hover
 {
   color: #D8442B;
 }
 
-.dropdown_teams
+.dropdown_teams, .dropdown_pos
 {
   position: relative;
 }
@@ -62,7 +63,8 @@
   z-index: 100; /*to make dropdown menu appear on top of table holding the cards*/
 }
 
-.dropdown_teams.active > .link + .dropdown_menuTeams
+.dropdown_teams.active > .link + .dropdown_menuTeams,
+.dropdown_pos.active > .link + .dropdown_menuTeams
 {
   opacity: 1; /*to make it appear when click*/
   transform: translateY(0); /*to make is come out from the top to bottom*/
@@ -92,6 +94,11 @@
 }
 
 .column1, .column2
+{
+  background-color: #2e2e33;
+}
+
+linkteam
 {
   background-color: #2e2e33;
 }
@@ -214,9 +221,9 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    color: #D8442B;
+    color: #ff9900;
     background-color: transparent;
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .product-info

@@ -52,17 +52,16 @@ document.addEventListener('click', e=> {
         })
 })
 
-
 document.body.onload = OnPageLoad;
 
-const nav_Teams = document.getElementById("nav_Teams");
-nav_Teams.onclick = TeamsUnique;
+// const nav_Teams = document.getElementById("nav_Teams");
+// //nav_Teams.onclick = TeamsUnique;
 
-const nav_Player =document.getElementById("nav_Player");
-//nav_Player.onclick = get players by year
+// const nav_Player =document.getElementById("nav_Player");
+// //nav_Player.onclick = get players by year
 
-const nav_Position = document.getElementById("nav_Position");
-//nav_Position.onclick = get available positions
+// const nav_Position = document.getElementById("nav_Position");
+// //nav_Position.onclick = get available positions
 
 
 //registra nombre de usuario en el arreglo
@@ -109,69 +108,95 @@ function FindPlayerByName()
 }
 
 //crea un arreglo con los equipos sin repetir
+//los agrega al dropdown de equipos
 function TeamsUnique()
 {
-    console.clear()
-    const equipos = new Set()
-    for (const iterator of NBA_AllStars) {
-        equipos.add(iterator.team)
+    //console.clear()
+    const equiposWest = new Set()
+    const equiposEast = new Set()
+    for (const iterator of NBA_AllStars) 
+    {
+        if(iterator.selection==="Western")
+            equiposWest.add(iterator.team)
+        else
+            equiposEast.add(iterator.team)
     }
-    console.log(equipos)
+    
+    equiposWest.forEach(element => 
+    {
+        let WestDropdown = document.createElement("linkTeam")
+        WestDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
+        let West = document.getElementById("West")
+        West.appendChild(WestDropdown);
+    });
+
+    equiposEast.forEach(element => 
+    {
+        let EastDropdown = document.createElement("linkTeam")
+        EastDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
+        let East = document.getElementById("East")
+        East.appendChild(EastDropdown);
+    });
+}
+
+//crea un arreglo con las posiciones sin repetir
+//los agrega al dropdown de posiciones
+function PositionUnique()
+{
+    const Positions = new Set()
+    for (const iterator of NBA_AllStars) 
+    {
+        Positions.add(iterator.pos)
+    }
+
+    Positions.forEach(element => 
+    {
+        let PosList = document.createElement("linkTeam")
+        PosList.innerHTML = `<a href="#" class="link">${element}</a>`;
+        let Pos = document.getElementById("Pos")
+        Pos.appendChild(PosList);
+    });
 }
 
 function OnPageLoad()
 {
     CreateTable();
-    LoadDropdowns();
+    TeamsUnique();
+    PositionUnique();
 }
 
 function CreateTable()
 {
+    let counter=0;
     let tableNBA = document.createElement("tableNBA")
-    tableNBA.innerHTML = 
-    `<table>
-    <tr>
-      <td>
+    let StringHTML="<table><table>";
+    for (const datos of NBA_AllStars) 
+    {
+        StringHTML = StringHTML +
+        `<td>
         <div class="card">
             <div class="top-section">
-                <img id="image-container" src="/Img/StephenCurry.png" alt="">
-                <div class="price">$40</div>
+                <img id="image-container" src=${datos.url} alt="">
+                <div class="price">$${datos.price}</div>
             </div>
             <div class="product-info">
-                <div class="selection">Western</div>
-                <div class="position">Guard</div>
-                <div class="year">2016</div>
+                <div class="selection">${datos.selection}</div>
+                <div class="position">${datos.pos}</div>
+                <div class="year">${datos.year}</div>
                 <button class="btn_Buy">Agregar al carrito</button>
             </div>
         </div>
-      </td>
-    </tr>
-    </table>`
+        </td>`
+        counter+=1;//5 cards per row
+        if(counter===5 || datos === NBA_AllStars.length-1) //when 5 or end of array
+        {
+            StringHTML =  StringHTML + `</tr>`;
+            counter=0;
+        }        
+    }
+
+    StringHTML =  StringHTML + `</table>`
+    tableNBA.innerHTML = StringHTML;
     let cuerpo = document.getElementById("cuerpo");
     cuerpo.appendChild(tableNBA);
-}
-
-function LoadDropdowns()
-{
-    let link = document.createElement("linkTeam")
-    link.innerHTML = 
-    `<div class="dropdown-heading">Western</div>
-    <div class="dropdown-links">
-        <a href="#" class="link">Los Angeles Lakers</a>
-        <a href="#" class="link">Portland Trailblazzers</a>
-        <a href="#" class="link">Golden State Warriors</a>
-    </div>`
-    let column1 = document.getElementById("column1")
-    column1.appendChild(link);
-
-    let link2 = document.createElement("linkTeam")
-    link2.innerHTML =
-    `<div class="dropdown-heading">Eastern</div>
-    <div class="dropdown-links">
-        <a href="#" class="link">Boston Celtics</a>
-        <a href="#" class="link">Miami Heat</a>
-        <a href="#" class="link">Chicago Bulls</a>
-    </div>`
-    let column2 = document.getElementById("column2")
-    column2.appendChild(link2);
 }
