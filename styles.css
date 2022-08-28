@@ -96,6 +96,8 @@
   background-color: #2e2e33;
 }
 
+/* right section */
+
 #btnSesion
 {
     padding: 9px 25px;
@@ -105,6 +107,8 @@
     cursor: pointer;
     transition: all 0.3s ease 0s;
     margin: 20px;
+    color: white;
+    font-size: 16px;
 }
 
 #btnSesion:hover
@@ -126,16 +130,26 @@
 }
 
 #nav_left
-{background-color: transparent;}
+{
+  background-color: transparent;
+  position: absolute;
+  right: 120px;
+}
 
 .cta
-{background-color: transparent;}
-
-#cardIcon
-{background-color: #2e2e33;}
+{
+  background-color: transparent;
+}
 
 .btnIcon
-{background-color: #2e2e33;}
+{
+  background-color: #2e2e33;
+}
+
+#CartIco
+{
+  background-color: transparent;
+}
 
 /* ----------------------------------------------- */
 
