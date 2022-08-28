@@ -30,7 +30,30 @@ const NBA_AllStars =
 //arreglo para registrar a los usuarios
 const Usuarios = []
 
-document.body.onload = CreateTable;
+//this is to avoid the dropdown when clicking inside of it
+document.addEventListener('click', e=> {
+    const isDropdownButton = e.target.matches("[data-dropdown-button]")
+    if(!isDropdownButton && e.target.closest('[data-dropdown]') != null) return
+
+    //get variable user is clicking
+    let currentDropdown
+    if(isDropdownButton)
+    {
+        currentDropdown = e.target.closest('[data-dropdown]')
+        currentDropdown.classList.toggle('active')
+    }
+
+    //close all other dropdowns
+    document.querySelectorAll('[data-dropdown].active').forEach(dropdown => 
+        {
+            if(dropdown===currentDropdown) return
+
+            dropdown.classList.remove('active')
+        })
+})
+
+
+document.body.onload = OnPageLoad;
 
 const nav_Teams = document.getElementById("nav_Teams");
 nav_Teams.onclick = TeamsUnique;
@@ -96,6 +119,12 @@ function TeamsUnique()
     console.log(equipos)
 }
 
+function OnPageLoad()
+{
+    CreateTable();
+    LoadDropdowns();
+}
+
 function CreateTable()
 {
     let tableNBA = document.createElement("tableNBA")
@@ -120,4 +149,29 @@ function CreateTable()
     </table>`
     let cuerpo = document.getElementById("cuerpo");
     cuerpo.appendChild(tableNBA);
+}
+
+function LoadDropdowns()
+{
+    let link = document.createElement("linkTeam")
+    link.innerHTML = 
+    `<div class="dropdown-heading">Western</div>
+    <div class="dropdown-links">
+        <a href="#" class="link">Los Angeles Lakers</a>
+        <a href="#" class="link">Portland Trailblazzers</a>
+        <a href="#" class="link">Golden State Warriors</a>
+    </div>`
+    let column1 = document.getElementById("column1")
+    column1.appendChild(link);
+
+    let link2 = document.createElement("linkTeam")
+    link2.innerHTML =
+    `<div class="dropdown-heading">Eastern</div>
+    <div class="dropdown-links">
+        <a href="#" class="link">Boston Celtics</a>
+        <a href="#" class="link">Miami Heat</a>
+        <a href="#" class="link">Chicago Bulls</a>
+    </div>`
+    let column2 = document.getElementById("column2")
+    column2.appendChild(link2);
 }

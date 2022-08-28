@@ -6,21 +6,14 @@
     background-color: #26262c;
 }
 
-/* header navigation bar */
-
-li, a, button
+.header
 {
-    color: white;
-    text-decoration: none;
-}
-
-header
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 10%;
-    background-color: #2e2e33;
+  background-color: #2e2e33;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  padding-left: 50px;
+  gap: 40px;
 }
 
 .logo
@@ -30,29 +23,77 @@ header
     background-color: transparent;
 }
 
-.nav_links
+.link
 {
-    list-style: none;
-    background-color: #2e2e33;
+  background-color: #2e2e33;
+  border: none;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s;
 }
 
-.nav_links li
+.dropdown_teams.active > .link,
+.link:hover
 {
-    display: inline-block; /*side by side*/
-    padding: 0px 20px;
-    background-color: transparent;
+  color: #D8442B;
 }
 
-.nav_links li a
+.dropdown_teams
 {
-    transition: all 0.3s ease 0s;
-    background-color: transparent;
+  position: relative;
 }
 
-.nav_links li a:hover
+.dropdown_menuTeams
 {
-    color:#D8442B;
-    background-color: transparent;
+  position: absolute;
+  left: 0;
+  top:calc(100%+ .25rem);
+  background-color: #2e2e33;
+  padding: .75rem;
+  border-radius: .25rem;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .2);
+  opacity: 0;
+  pointer-events: none; /*dont allow interaction with the cursor*/
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  z-index: 100; /*to make dropdown menu appear on top of table holding the cards*/
+}
+
+.dropdown_teams.active > .link + .dropdown_menuTeams
+{
+  opacity: 1; /*to make it appear when click*/
+  transform: translateY(0); /*to make is come out from the top to bottom*/
+  pointer-events: auto; 
+}
+
+.dropdown-heading
+{
+  color: #ff9900;
+  font-size: 20px;
+  background-color: #2e2e33;
+}
+
+.information-grid
+{
+  display: grid;
+  grid-template-columns: repeat(2,max-content);
+  gap: 2rem;
+}
+
+.dropdown-links
+{
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  background-color: #2e2e33;
+}
+
+.column1, .column2
+{
+  background-color: #2e2e33;
 }
 
 #btnSesion

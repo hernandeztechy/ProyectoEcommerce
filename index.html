@@ -8,26 +8,24 @@
     <title>NBA All-Star Cards</title>
 </head>
 <body>
-    <header>
+    <nav class="header">
         <img class="logo" src="Img/All_Star_Logo.png" alt="logo">
-        <nav id="nav">
-            <ul class="nav_links">
-                <li><a id="nav_Teams">Equipos</a></li>
-                <li><a id="nav_Player">Jugador</a></li>
-                <li><a id="nav_Position">Posición</a></li>
-            </ul>
-        </nav>
-        <div id="nav_left">
-            <a class="cta" href="#"><button id="btnSesion">Iniciar Sesion</button></a>
-            <button id="btnCart">
-                <span class="btnIcon">
-                    <ion-icon id="cardIcon" name="cart-outline"></ion-icon>
-                    <!-- <img id="ImgCart" src="/Img/Cart.png"> -->
-                </span>
-            </button>
+
+        <div class="dropdown_teams" data-dropdown>
+            <button class="link" data-dropdown-button>Equipos</button>
+            <div class="dropdown_menuTeams information-grid">
+                <div id="column1">
+                    <!-- items will load from script -->
+                </div>
+                <div id="column2">
+                    <!-- items will load from script -->
+                </div>
+            </div>
         </div>
-        
-    </header>
+
+        <button class="link" data-dropdown-button>Posiciones</button>
+
+    </nav>
 
     <div id="cuerpo" class="flex-container">
         <!-- items will load from script -->
