@@ -165,6 +165,8 @@ function OnPageLoad()
     PositionUnique();
 }
 
+//creates the entire table with the cards as contents
+//loads the code to the HTML
 function CreateTable()
 {
     let counter=0;
