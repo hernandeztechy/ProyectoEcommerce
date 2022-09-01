@@ -31,6 +31,7 @@ const NBA_AllStars =
 const ShoppingCart = []
 const Usuarios = []
 
+//----------------------------------------------
 //this is to avoid the dropdown when clicking inside of it
 document.addEventListener('click', e=> {
     const isDropdownButton = e.target.matches("[data-dropdown-button]")
@@ -53,15 +54,104 @@ document.addEventListener('click', e=> {
         })
 })
 
-document.body.onload = OnPageLoad;
+//document.body.onload = OnPageLoad;
 
-//when clicking on specific position
-// const PosClick = document.getElementsByClassName("link");
-// PosClick.onclick = PositionClicked(this.id) 
+//----------------------------------------------
 
-//when click on Add to cart
-const btnBuy = document.getElementsByClassName("btn_Buy")
-btnBuy.onclick = AddToCart
+//crea un arreglo con las posiciones sin repetir
+//los agrega al dropdown de posiciones
+const Positions = new Set()
+for (const iterator of NBA_AllStars) 
+{
+    Positions.add(iterator.pos)
+}
+
+Positions.forEach(element => 
+{
+    let PosList = document.createElement("linkTeam")
+    PosList.innerHTML = `<a id="${element}" class="linkPos">${element}</a>`;
+    let Pos = document.getElementById("Pos")
+    Pos.appendChild(PosList);
+
+    //when clicking on specific position
+    const PosClick = document.getElementById(`${element}`)
+    PosClick.onclick = () => PositionClicked(element);
+});
+
+
+
+//----------------------------------------------
+
+
+//crea un arreglo con los equipos sin repetir
+//los agrega al dropdown de equipos
+const equiposWest = new Set()
+const equiposEast = new Set()
+for (const iterator of NBA_AllStars) 
+    iterator.selection==="Western" ? equiposWest.add(iterator.team) : equiposEast.add(iterator.team)
+    
+equiposWest.forEach(element => 
+{
+    let WestDropdown = document.createElement("linkTeam")
+    WestDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
+    let West = document.getElementById("West")
+    West.appendChild(WestDropdown);
+});
+
+equiposEast.forEach(element => 
+{
+    let EastDropdown = document.createElement("linkTeam")
+    EastDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
+    let East = document.getElementById("East")
+    East.appendChild(EastDropdown);
+});
+
+
+
+//----------------------------------------------
+//creates the entire table with the cards as contents
+//loads the code to the HTML
+
+let counter=0;
+    let tableNBA = document.createElement("tableNBA")
+    let StringHTML="<table><table>";
+
+    for (const datos of NBA_AllStars) 
+    {
+        StringHTML = StringHTML +
+        `<td>
+        <div class="card">
+            <div class="top-section">
+                <img id="image-container" src=${datos.url} alt="">
+                <div class="price">$${datos.price}</div>
+            </div>
+            <div class="product-info">
+                <div class="selection">${datos.selection}</div>
+                <div class="position">${datos.pos}</div>
+                <div class="year">${datos.year}</div>
+                <button id="${datos.id}" class="btn_Buy">Agregar al carrito</button>
+            </div>
+        </div>
+        </td>`
+        counter+=1;//5 cards per row
+        if(counter===5 || datos === NBA_AllStars.length-1) //when 5 or end of array
+        {
+            StringHTML =  StringHTML + `</tr>`;
+            counter=0;
+        }        
+    }
+
+    StringHTML =  StringHTML + `</table>`
+    tableNBA.innerHTML = StringHTML;
+    let cuerpo = document.getElementById("cuerpo");
+    cuerpo.appendChild(tableNBA);
+
+//----------------------------------------------
+
+
+// //when click on Add to cart
+// const btnBuy = document.getElementsByClassName("btn_Buy")
+// btnBuy.onclick = AddToCart
 
 function AddToCart(e)
 {
@@ -123,9 +213,7 @@ function TeamsUnique()
     const equiposWest = new Set()
     const equiposEast = new Set()
     for (const iterator of NBA_AllStars) 
-    {
         iterator.selection==="Western" ? equiposWest.add(iterator.team) : equiposEast.add(iterator.team)
-    }
     
     equiposWest.forEach(element => 
     {
@@ -157,10 +245,14 @@ function PositionUnique()
     Positions.forEach(element => 
     {
         let PosList = document.createElement("linkTeam")
-        PosList.innerHTML = `<a id="${element}" class="link">${element}</a>`;
+        PosList.innerHTML = `<a id="${element}" class="linkPos">${element}</a>`;
         let Pos = document.getElementById("Pos")
         Pos.appendChild(PosList);
     });
+
+    //when clicking on specific position
+    const PosClick = document.getElementById(`${element}`)
+    PosClick.onclick = () => PositionClicked(element);
 }
 
 function OnPageLoad()
@@ -211,5 +303,5 @@ function CreateTable()
 
 function PositionClicked(id)
 {
-    //unfinished
+    alert(id)
 }

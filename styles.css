@@ -23,7 +23,7 @@
     background-color: transparent;
 }
 
-.link
+.link, .linkPos
 {
   background-color: #2e2e33;
   border: none;
@@ -37,7 +37,9 @@
 
 .dropdown_teams.active > .link, 
 .dropdown_pos.active > .link,
-.link:hover
+.dropdown_teams.active > .linkPos, 
+.dropdown_pos.active > .linkPos,
+.link:hover, .linkPos:hover
 {
   color: #D8442B;
 }
