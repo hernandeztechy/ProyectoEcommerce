@@ -158,6 +158,31 @@ linkteam
   background-color: transparent;
 }
 
+#CartIcoDiv
+{
+  background-color: #2e2e33;
+}
+
+#Cant_inCart
+{
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50px;
+  position: absolute;
+  right: 0px;
+  bottom: 45px;
+}
+
+#Cant_inCartText
+{
+  font-size: 10px;
+  color: #2e2e33;
+  background-color: transparent;
+  position: relative;
+  align-items: center;
+}
+
 /* ----------------------------------------------- */
 
 #cuerpo
