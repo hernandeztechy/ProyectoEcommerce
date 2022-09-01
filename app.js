@@ -27,7 +27,8 @@ const NBA_AllStars =
     {id:24,year:2016, nombre:"Paul Millsap", pos:"FC", team:"Atlanta Hawks", selection:"Eastern",price: 40, url: "/Img/Millsap.png"},
 ]
 
-//arreglo para registrar a los usuarios
+//arreglo para registrar las compras al carrito
+const ShoppingCart = []
 const Usuarios = []
 
 //this is to avoid the dropdown when clicking inside of it
@@ -55,8 +56,21 @@ document.addEventListener('click', e=> {
 document.body.onload = OnPageLoad;
 
 //when clicking on specific position
-const PosClick = document.getElementsByClassName("link");
-PosClick.onclick = PositionClicked(this.id) 
+// const PosClick = document.getElementsByClassName("link");
+// PosClick.onclick = PositionClicked(this.id) 
+
+//when click on Add to cart
+const btnBuy = document.getElementsByClassName("btn_Buy")
+btnBuy.onclick = AddToCart
+
+function AddToCart(e)
+{
+    e = e || window.event;
+    e = e.target || e.srcElement;
+    if (e.nodeName === 'BUTTON') {
+        alert(e.id);
+    }
+}
 
 //registra nombre de usuario en el arreglo
 function RegUsuario()
@@ -110,10 +124,7 @@ function TeamsUnique()
     const equiposEast = new Set()
     for (const iterator of NBA_AllStars) 
     {
-        if(iterator.selection==="Western")
-            equiposWest.add(iterator.team)
-        else
-            equiposEast.add(iterator.team)
+        iterator.selection==="Western" ? equiposWest.add(iterator.team) : equiposEast.add(iterator.team)
     }
     
     equiposWest.forEach(element => 
@@ -166,6 +177,7 @@ function CreateTable()
     let counter=0;
     let tableNBA = document.createElement("tableNBA")
     let StringHTML="<table><table>";
+
     for (const datos of NBA_AllStars) 
     {
         StringHTML = StringHTML +
