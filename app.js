@@ -93,17 +93,25 @@ for (const iterator of NBA_AllStars)
 equiposWest.forEach(element => 
 {
     let WestDropdown = document.createElement("linkTeam")
-    WestDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
+    WestDropdown.innerHTML = `<a id="${element}" class="link">${element}</a>`;
     let West = document.getElementById("West")
     West.appendChild(WestDropdown);
+
+    //when clicking on specific team
+    const TeamClick = document.getElementById(`${element}`)
+    TeamClick.onclick = () => TeamClicked(element);
 });
 
 equiposEast.forEach(element => 
 {
     let EastDropdown = document.createElement("linkTeam")
-    EastDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
+    EastDropdown.innerHTML = `<a id="${element}" class="link">${element}</a>`;
     let East = document.getElementById("East")
     East.appendChild(EastDropdown);
+
+    //when clicking on specific team
+    const TeamClick = document.getElementById(`${element}`)
+    TeamClick.onclick = () => TeamClicked(element);
 });
 
 
@@ -146,20 +154,23 @@ let counter=0;
     let cuerpo = document.getElementById("cuerpo");
     cuerpo.appendChild(tableNBA);
 
+    Toastify({
+        text: 'Cargado correctamente',
+        duration: 3000,
+        newWindow: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        // close: true,
+        style:{
+            background: "linear-gradient(to right, #f08573, #e32505)",
+        }
+    }).showToast();
 //----------------------------------------------
 
-
-// //when click on Add to cart
-// const btnBuy = document.getElementsByClassName("btn_Buy")
-// btnBuy.onclick = AddToCart
-
-function AddToCart(e)
+function AddToCart()
 {
-    e = e || window.event;
-    e = e.target || e.srcElement;
-    if (e.nodeName === 'BUTTON') {
-        alert(e.id);
-    }
+    
 }
 
 //registra nombre de usuario en el arreglo
@@ -168,15 +179,6 @@ function RegUsuario()
     let user = prompt("Antes de iniciar, indique su nombre: ")
     Usuarios.push(user);
     console.log(Usuarios)
-}
-
-//filtrar por posicion
-function FiltroPosicion()
-{
-    console.clear()
-    let selecPos = prompt("Elija una posicion para filtrar (G,SG,SF,F,PF,C,FC): ")
-    const posicion = NBA_AllStars.filter(dato => dato.pos == (selecPos))
-    console.log(posicion);
 }
 
 //jugadores y su equipo solamente
@@ -205,72 +207,22 @@ function FindPlayerByName()
         console.log("No se encontró al jugador")
 }
 
-//crea un arreglo con los equipos sin repetir
-//los agrega al dropdown de equipos
-function TeamsUnique()
-{
-    //console.clear()
-    const equiposWest = new Set()
-    const equiposEast = new Set()
-    for (const iterator of NBA_AllStars) 
-        iterator.selection==="Western" ? equiposWest.add(iterator.team) : equiposEast.add(iterator.team)
-    
-    equiposWest.forEach(element => 
-    {
-        let WestDropdown = document.createElement("linkTeam")
-        WestDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
-        let West = document.getElementById("West")
-        West.appendChild(WestDropdown);
-    });
-
-    equiposEast.forEach(element => 
-    {
-        let EastDropdown = document.createElement("linkTeam")
-        EastDropdown.innerHTML = `<a href="#" class="link">${element}</a>`;
-        let East = document.getElementById("East")
-        East.appendChild(EastDropdown);
-    });
-}
-
-//crea un arreglo con las posiciones sin repetir
-//los agrega al dropdown de posiciones
-function PositionUnique()
-{
-    const Positions = new Set()
-    for (const iterator of NBA_AllStars) 
-    {
-        Positions.add(iterator.pos)
-    }
-
-    Positions.forEach(element => 
-    {
-        let PosList = document.createElement("linkTeam")
-        PosList.innerHTML = `<a id="${element}" class="linkPos">${element}</a>`;
-        let Pos = document.getElementById("Pos")
-        Pos.appendChild(PosList);
-    });
-
-    //when clicking on specific position
-    const PosClick = document.getElementById(`${element}`)
-    PosClick.onclick = () => PositionClicked(element);
-}
-
-function OnPageLoad()
-{
-    CreateTable();
-    TeamsUnique();
-    PositionUnique();
-}
-
 //creates the entire table with the cards as contents
+//receives a object with the NBA data already filtered by the user selection
 //loads the code to the HTML
-function CreateTable()
-{
+function UpdateTableWithFilter(objetoFiltered)
+{   
+    //remove existant table
+    let element = document.getElementsByTagName("table"), index;
+    for (index = element.length - 1; index >= 0; index--) 
+    {
+        element[index].parentNode.removeChild(element[index]);
+    }  
+
     let counter=0;
     let tableNBA = document.createElement("tableNBA")
-    let StringHTML="<table><table>";
-
-    for (const datos of NBA_AllStars) 
+    let StringHTML="<table>"
+    for (const datos of objetoFiltered) 
     {
         StringHTML = StringHTML +
         `<td>
@@ -283,25 +235,41 @@ function CreateTable()
                 <div class="selection">${datos.selection}</div>
                 <div class="position">${datos.pos}</div>
                 <div class="year">${datos.year}</div>
-                <button id=${datos.id} class="btn_Buy">Agregar al carrito</button>
+                <button id="${datos.id}" class="btn_Buy">Agregar al carrito</button>
             </div>
         </div>
         </td>`
         counter+=1;//5 cards per row
-        if(counter===5 || datos === NBA_AllStars.length-1) //when 5 or end of array
+        if(counter===5 || datos === objetoFiltered.length-1) //when 5 or end of array
         {
             StringHTML =  StringHTML + `</tr>`;
             counter=0;
-        }        
+        }   
+        
+        //when clicking on specific card ---------WIP---------
+        // const CartClick = document.getElementById(`${datos.id}`)
+        // CartClick.onclick = () => CartClicked(datos.id);
     }
 
     StringHTML =  StringHTML + `</table>`
     tableNBA.innerHTML = StringHTML;
     let cuerpo = document.getElementById("cuerpo");
-    cuerpo.appendChild(tableNBA);
+    cuerpo.appendChild(tableNBA); //includes new child
 }
 
-function PositionClicked(id)
+function PositionClicked(idPos)
 {
-    alert(id)
+    const posicion = NBA_AllStars.filter(dato => dato.pos == (idPos))
+    UpdateTableWithFilter(posicion);
+}
+
+function TeamClicked(idTeam)
+{
+    const SelectedTeam = NBA_AllStars.filter(dato => dato.team == (idTeam))
+    UpdateTableWithFilter(SelectedTeam);
+}
+
+function CartClicked(idPlayer)
+{
+    console.log(idPlayer)
 }
