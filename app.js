@@ -119,40 +119,32 @@ equiposEast.forEach(element =>
 //----------------------------------------------
 //creates the entire table with the cards as contents
 //loads the code to the HTML
+const cuerpo = document.getElementById("cuerpo");
 
-let counter=0;
-    let tableNBA = document.createElement("tableNBA")
-    let StringHTML="<table><table>";
-
-    for (const datos of NBA_AllStars) 
-    {
-        StringHTML = StringHTML +
-        `<td>
-        <div class="card">
-            <div class="top-section">
-                <img id="image-container" src=${datos.url} alt="">
-                <div class="price">$${datos.price}</div>
-            </div>
-            <div class="product-info">
-                <div class="selection">${datos.selection}</div>
-                <div class="position">${datos.pos}</div>
-                <div class="year">${datos.year}</div>
-                <button id="${datos.id}" class="btn_Buy">Agregar al carrito</button>
-            </div>
+for (const datos of NBA_AllStars) 
+{
+    const NBACard = document.createElement("div")
+    
+    NBACard.innerHTML = 
+    `<div class="card">
+        <div class="top-section">
+            <img id="image-container" src=${datos.url} alt="">
+            <div class="price">$${datos.price}</div>
         </div>
-        </td>`
-        counter+=1;//5 cards per row
-        if(counter===5 || datos === NBA_AllStars.length-1) //when 5 or end of array
-        {
-            StringHTML =  StringHTML + `</tr>`;
-            counter=0;
-        }        
-    }
+        <div class="product-info">
+            <div class="selection">${datos.selection}</div>
+            <div class="position">${datos.pos}</div>
+            <div class="year">${datos.year}</div>
+            <button id="${datos.id}" class="btn_Buy">Agregar al carrito</button>
+        </div>
+    </div>`     
 
-    StringHTML =  StringHTML + `</table>`
-    tableNBA.innerHTML = StringHTML;
-    let cuerpo = document.getElementById("cuerpo");
-    cuerpo.appendChild(tableNBA);
+    cuerpo.appendChild(NBACard);
+
+    //when clicking on buy button
+    const BuyClick = document.getElementById(`${datos.id}`)
+    BuyClick.onclick = () => AddToCart(datos.id);
+}
 
     Toastify({
         text: 'Cargado correctamente',
@@ -168,9 +160,9 @@ let counter=0;
     }).showToast();
 //----------------------------------------------
 
-function AddToCart()
+const AddToCart = (idCard) => 
 {
-    
+    alert('ID seleccionado: ',idCard)
 }
 
 //registra nombre de usuario en el arreglo
@@ -212,21 +204,19 @@ function FindPlayerByName()
 //loads the code to the HTML
 function UpdateTableWithFilter(objetoFiltered)
 {   
-    //remove existant table
-    let element = document.getElementsByTagName("table"), index;
-    for (index = element.length - 1; index >= 0; index--) 
-    {
-        element[index].parentNode.removeChild(element[index]);
-    }  
+    //remove existant table WIPPP
+    // let element = document.getElementsByTagName("table"), index;
+    // for (index = element.length - 1; index >= 0; index--) 
+    // {
+    //     element[index].parentNode.removeChild(element[index]);
+    // }  
 
-    let counter=0;
-    let tableNBA = document.createElement("tableNBA")
-    let StringHTML="<table>"
     for (const datos of objetoFiltered) 
     {
-        StringHTML = StringHTML +
-        `<td>
-        <div class="card">
+        const NBACard = document.createElement("div")
+        
+        NBACard.innerHTML = 
+        `<div class="card">
             <div class="top-section">
                 <img id="image-container" src=${datos.url} alt="">
                 <div class="price">$${datos.price}</div>
@@ -237,24 +227,14 @@ function UpdateTableWithFilter(objetoFiltered)
                 <div class="year">${datos.year}</div>
                 <button id="${datos.id}" class="btn_Buy">Agregar al carrito</button>
             </div>
-        </div>
-        </td>`
-        counter+=1;//5 cards per row
-        if(counter===5 || datos === objetoFiltered.length-1) //when 5 or end of array
-        {
-            StringHTML =  StringHTML + `</tr>`;
-            counter=0;
-        }   
-        
-        //when clicking on specific card ---------WIP---------
-        // const CartClick = document.getElementById(`${datos.id}`)
-        // CartClick.onclick = () => CartClicked(datos.id);
-    }
+        </div>`     
 
-    StringHTML =  StringHTML + `</table>`
-    tableNBA.innerHTML = StringHTML;
-    let cuerpo = document.getElementById("cuerpo");
-    cuerpo.appendChild(tableNBA); //includes new child
+        cuerpo.appendChild(NBACard);
+
+        //when clicking on buy button
+        const BuyClick = document.getElementById(`${datos.id}`)
+        BuyClick.onclick = () => AddToCart(datos.id);
+    }
 }
 
 function PositionClicked(idPos)
@@ -267,9 +247,4 @@ function TeamClicked(idTeam)
 {
     const SelectedTeam = NBA_AllStars.filter(dato => dato.team == (idTeam))
     UpdateTableWithFilter(SelectedTeam);
-}
-
-function CartClicked(idPlayer)
-{
-    console.log(idPlayer)
 }

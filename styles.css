@@ -189,8 +189,10 @@ linkteam
 
 #cuerpo
 {
-    margin: 0% 6%;
-    transform: perspective(0%, 6%);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
 }
 
 #end
@@ -227,6 +229,7 @@ linkteam
   {
     width: 230px;
     background-color: #D8442B;
+    margin: 15px;
   }
 
   .top-section
