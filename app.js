@@ -90,45 +90,51 @@ equiposEast.forEach(element =>
 //loads the code to the HTML
 const cuerpo = document.getElementById("cuerpo");
 
-NBA_AllStars.forEach((element) => 
+LoadCards();
+
+function LoadCards()
 {
-    const {url, price, selection, position, year, id} = element
+    NBA_AllStars.forEach((element) => 
+    {
+        const {url, price, selection, pos, year, id} = element
 
-    const NBACard = document.createElement("div")
+        const NBACard = document.createElement("div")
+        
+        NBACard.innerHTML = 
+        `<div class="card">
+            <div class="top-section">
+                <img id="image-container" src=${url} alt="">
+                <div class="price">$${price}</div>
+            </div>
+            <div class="product-info">
+                <div class="selection">${selection}</div>
+                <div class="position">${pos}</div>
+                <div class="year">${year}</div>
+                <button id="${id}" class="btn_Buy">Agregar al carrito</button>
+            </div>
+        </div>`     
+
+        cuerpo.appendChild(NBACard);
+
+        //when clicking on buy button
+        const BuyClick = document.getElementById(`${id}`)
+        BuyClick.onclick = () => AddToCart(id);
+        //BuyClick.addEventListener('click', () => { AddToCart(id)})
+    })
     
-    NBACard.innerHTML = 
-    `<div class="card">
-        <div class="top-section">
-            <img id="image-container" src=${url} alt="">
-            <div class="price">$${price}</div>
-        </div>
-        <div class="product-info">
-            <div class="selection">${selection}</div>
-            <div class="position">${position}</div>
-            <div class="year">${year}</div>
-            <button id="${id}" class="btn_Buy">Agregar al carrito</button>
-        </div>
-    </div>`     
-
-    cuerpo.appendChild(NBACard);
-
-    //when clicking on buy button
-    const BuyClick = document.getElementById(`${id}`)
-    BuyClick.onclick = () => AddToCart(id);
-})
-
-    Toastify({
-        text: 'Cargado correctamente',
-        duration: 3000,
-        newWindow: true,
-        gravity: "bottom",
-        position: "right",
-        stopOnFocus: true,
-        // close: true,
-        style:{
-            background: "linear-gradient(to right, #f08573, #e32505)",
-        }
-    }).showToast();
+        Toastify({
+            text: 'Cargado correctamente',
+            duration: 3000,
+            newWindow: true,
+            gravity: "bottom",
+            position: "right",
+            stopOnFocus: true,
+            // close: true,
+            style:{
+                background: "linear-gradient(to right, #f08573, #e32505)",
+            }
+        }).showToast();
+}
 //----------------------------------------------
 
 const AddToCart = (idCard) => 
@@ -183,7 +189,7 @@ function UpdateTableWithFilter(objetoFiltered)
     //place new set of cards
     objetoFiltered.forEach((element) => 
     {
-        const {url, price, selection, position, year, id} = element
+        const {url, price, selection, pos, year, id} = element
 
         const NBACard = document.createElement("div")
         
@@ -195,7 +201,7 @@ function UpdateTableWithFilter(objetoFiltered)
             </div>
             <div class="product-info">
                 <div class="selection">${selection}</div>
-                <div class="position">${position}</div>
+                <div class="position">${pos}</div>
                 <div class="year">${year}</div>
                 <button id="${id}" class="btn_Buy">Agregar al carrito</button>
             </div>
