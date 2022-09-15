@@ -89,6 +89,8 @@ equiposEast.forEach(element =>
 //creates the entire table with the cards as contents
 //loads the code to the HTML
 const cuerpo = document.getElementById("cuerpo");
+const CartQty = document.getElementById('Cant_inCartText');
+let CartQtyCount=0;
 
 LoadCards();
 
@@ -126,24 +128,47 @@ function LoadCards()
         BuyClick.onclick = () => AddToCart(id);
     })
     
-        Toastify({
-            text: 'Cargado correctamente',
-            duration: 3000,
-            newWindow: true,
-            gravity: "bottom",
-            position: "right",
-            stopOnFocus: true,
-            // close: true,
-            style:{
-                background: "linear-gradient(to right, #f08573, #e32505)",
-            }
-        }).showToast();
 }
 //----------------------------------------------
 
 const AddToCart = (idCard) => 
 {
-    alert(`ID seleccionado: ${idCard}`)
+    //get all data from the selected card into itemCard
+    const itemCard = NBA_AllStars.find((Card) => Card.id === idCard)
+
+    //check if item is already in the shopping cart then just adds 1 to the same item
+    const exists = ShoppingCart.some(item=>item.id === idCard)
+    if(exists)
+    {
+        const item = ShoppingCart.map (item => 
+            {
+                if(item.id === idCard)
+                {
+                    item.cant++;
+                    CartQtyCount++;
+                    CartQty.innerHTML = CartQtyCount;
+                }
+            })
+    }
+    else //if doesnt exists in the cart then adds it
+    {
+        ShoppingCart.push({id:idCard, player:itemCard.nombre, year:itemCard.year, precio:itemCard.price, cant:1})
+        CartQtyCount++;
+        CartQty.innerHTML = CartQtyCount;
+    }
+
+    Toastify({
+        text: 'Agregado al carrito',
+        duration: 1000,
+        newWindow: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        // close: true,
+        style:{
+            background: "linear-gradient(to right, #f08573, #e32505)",
+        }
+    }).showToast();
 }
 
 //registra nombre de usuario en el arreglo
