@@ -25,8 +25,6 @@ document.addEventListener('click', e=> {
         })
 })
 
-//document.body.onload = OnPageLoad;
-
 //----------------------------------------------
 
 //crea un arreglo con las posiciones sin repetir
@@ -177,37 +175,51 @@ function FindPlayerByName()
 //loads the code to the HTML
 function UpdateTableWithFilter(objetoFiltered)
 {   
-    //remove existant table WIPPP
-    // let element = document.getElementsByTagName("table"), index;
-    // for (index = element.length - 1; index >= 0; index--) 
-    // {
-    //     element[index].parentNode.removeChild(element[index]);
-    // }  
+    //remove existant table cards
+    while (cuerpo.firstChild) {
+        cuerpo.firstChild.remove()
+    }
 
-    for (const datos of objetoFiltered) 
+    //place new set of cards
+    objetoFiltered.forEach((element) => 
     {
+        const {url, price, selection, position, year, id} = element
+
         const NBACard = document.createElement("div")
         
         NBACard.innerHTML = 
         `<div class="card">
             <div class="top-section">
-                <img id="image-container" src=${datos.url} alt="">
-                <div class="price">$${datos.price}</div>
+                <img id="image-container" src=${url} alt="">
+                <div class="price">$${price}</div>
             </div>
             <div class="product-info">
-                <div class="selection">${datos.selection}</div>
-                <div class="position">${datos.pos}</div>
-                <div class="year">${datos.year}</div>
-                <button id="${datos.id}" class="btn_Buy">Agregar al carrito</button>
+                <div class="selection">${selection}</div>
+                <div class="position">${position}</div>
+                <div class="year">${year}</div>
+                <button id="${id}" class="btn_Buy">Agregar al carrito</button>
             </div>
         </div>`     
 
         cuerpo.appendChild(NBACard);
 
         //when clicking on buy button
-        const BuyClick = document.getElementById(`${datos.id}`)
-        BuyClick.onclick = () => AddToCart(datos.id);
-    }
+        const BuyClick = document.getElementById(`${id}`)
+        BuyClick.onclick = () => AddToCart(id);
+    })
+
+        Toastify({
+            text: 'Filtro aplicado',
+            duration: 3000,
+            newWindow: true,
+            gravity: "bottom",
+            position: "right",
+            stopOnFocus: true,
+            // close: true,
+            style:{
+                background: "linear-gradient(to right, #f08573, #e32505)",
+            }
+        }).showToast();
 }
 
 function PositionClicked(idPos)
