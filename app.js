@@ -94,6 +94,11 @@ LoadCards();
 
 function LoadCards()
 {
+    //remove existant table cards
+    while (cuerpo.firstChild) {
+        cuerpo.firstChild.remove()
+    }
+
     NBA_AllStars.forEach((element) => 
     {
         const {url, price, selection, pos, year, id} = element
@@ -119,7 +124,6 @@ function LoadCards()
         //when clicking on buy button
         const BuyClick = document.getElementById(`${id}`)
         BuyClick.onclick = () => AddToCart(id);
-        //BuyClick.addEventListener('click', () => { AddToCart(id)})
     })
     
         Toastify({
@@ -139,7 +143,7 @@ function LoadCards()
 
 const AddToCart = (idCard) => 
 {
-    alert('ID seleccionado: ',idCard)
+    alert(`ID seleccionado: ${idCard}`)
 }
 
 //registra nombre de usuario en el arreglo
