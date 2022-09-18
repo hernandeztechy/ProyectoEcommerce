@@ -3,7 +3,11 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin:0;
     padding: 0;
-    background-color: #e6e6e6;
+}
+
+body
+{
+  background-color: #e6e6e6;
 }
 
 .header
@@ -417,7 +421,7 @@ linkteam
 
 .item:hover
 {
-  border: 1px solid #b9b9b9;
+  border: 1px solid #ffffff;
   border-radius: 10px;
 }
 

@@ -1,5 +1,5 @@
 //arreglo para registrar las compras al carrito
-const ShoppingCart = []
+let ShoppingCart = []
 const Usuarios = []
 
 //----------------------------------------------
@@ -133,7 +133,29 @@ function LoadCards()
     
 }
 //----------------------------------------------
+//Loading ShoppingCart from LocalStorage into the object ShoppingCart
+//se llama cuando carga la pagina
+document.addEventListener("DOMContentLoaded", LoadShoppingCart);
 
+function LoadShoppingCart()
+{
+    if (localStorage.getItem('ShoppingCart'))
+    {
+        ShoppingCart = JSON.parse(localStorage.getItem('ShoppingCart'))
+        ActualizaCarritoQty()
+    }    
+}
+//----------------------------------------------
+//actualizar el numero del icono carrito
+function ActualizaCarritoQty()
+{
+    for (const iterator of ShoppingCart) 
+    {
+        CartQtyCount = CartQtyCount + iterator.cant;
+    }
+    CartQty.innerHTML = CartQtyCount;
+}
+//----------------------------------------------
 const AddToCart = (idCard) => 
 {
     //get all data from the selected card into itemCard
@@ -159,6 +181,12 @@ const AddToCart = (idCard) =>
         CartQtyCount++;
         CartQty.innerHTML = CartQtyCount;
     }
+
+    //agregar a LocalStorage
+    //1.convertir objeto a string
+    const ShoppingCartString = JSON.stringify(ShoppingCart)
+    //2. Store it
+    localStorage.setItem("ShoppingCart", ShoppingCartString)
 
     Toastify({
         text: 'Agregado al carrito',
