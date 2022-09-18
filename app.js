@@ -47,10 +47,7 @@ Positions.forEach(element =>
     PosClick.onclick = () => PositionClicked(element);
 });
 
-
-
 //----------------------------------------------
-
 
 //crea un arreglo con los equipos sin repetir
 //los agrega al dropdown de equipos
@@ -84,16 +81,22 @@ equiposEast.forEach(element =>
 });
 
 
+//---------------------------------------------------
+//variables from DOM and others
+const logo = document.getElementById("logo");
+logo.onclick = () => {window.location.pathname = ('/index.html')}
 
-//----------------------------------------------
-//creates the entire table with the cards as contents
-//loads the code to the HTML
+const btnShopCart = document.getElementById("btnCart")
+btnShopCart.onclick = () => {window.location.pathname = ('/ShoppingCart.html')}
+
 const cuerpo = document.getElementById("cuerpo");
 const CartQty = document.getElementById('Cant_inCartText');
 let CartQtyCount=0;
 
+//----------------------------------------------
+//creates the entire table with the cards as contents
+//loads the code to the HTML
 LoadCards();
-
 function LoadCards()
 {
     //remove existant table cards

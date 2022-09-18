@@ -211,19 +211,6 @@ linkteam
     background-color: transparent;
 }
 
-
-  /* ------------------TABLE----------------------------- */
-
-  table
-  {
-    margin: 20px 0px;
-  }
-
-  td
-  {
-    padding: 15px;
-  }
-
   /* -------------------CARDS---------------------------- */
   .card
   {
@@ -307,7 +294,190 @@ linkteam
     color: #D8442B;
   }
 
-  /* ----------------------------------------------- */
+  /* -----------------Shopping Card Page------------------------------ */
+.titleNavBar
+{
+  background-color: transparent;
+  color: #ff9900;
+  font-size: 25px;
+}
+
+.headerShoppingCart
+{
+  margin: auto;
+  width: 550px;
+  padding: 15px 30px 15px 30px; /*top, right, bottom, left */
+}
+
+.HeaderSCTitle
+{
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.PrecioHeader
+{
+  float: right;
+  align-items: baseline;
+  font-size: 20px;
+}
+
+.itemsdiv
+{
+  margin: auto; /*centers div horizontally*/
+  width: 600px;
+  background-color: #cecece;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.item
+{
+  background-color: transparent;
+  color: #2e2e33;
+  padding: 10px;
+  border-radius:10px; /*invisible on default*/
+  border-color: #cecece; /*invisible on default*/
+  transition: all 0.3s ease 0s;
+}
+
+.gridDiv
+{
+  display: grid;
+  grid-template-columns: 450px 200px;
+  background-color: transparent;
+  padding-bottom: 10px;
+}
+
+.columnShopC
+{
+  float: left;
+  width: 60%;
+  background-color: transparent;
+}
+
+#precioItem
+{
+  text-align: end;
+}
+
+.SubtotalDiv
+{
+  padding-right: 7px;
+  text-align: end;
+  background-color: transparent;
+}
+
+.PlayerName
+{
+  font-size: 22px;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.CardYear
+{
+  font-size: 18px;
+  font-weight: 400;
+  background-color: transparent;
+}
+
+#btnDelete
+{
+  font-size: 18px;
+  font-weight: 400;
+  background-color: transparent;
+}
+
+#CantShpCrt
+{
+  width: 50px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: transparent;
+  text-align: center;
+}
+
+#TrashIco
+{
+  color: #4e4e50;
+  background-color: transparent;
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+  transition: all 0.3s ease 0s;
+}
+
+.Prices
+{
+  font-size: 25px;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+.item:hover
+{
+  border: 1px solid #b9b9b9;
+  border-radius: 10px;
+}
+
+#TrashIco:hover
+{
+  color:#D8442B;
+}
+
+.footerSC
+{
+  width: 600px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#btnPay
+{
+    padding: 9px 25px;
+    background-color: #ff9900;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin: 10px 10px 0px;
+    color: #2e2e33;
+    font-size: 16px;
+    font-weight: 500;
+    float:right;
+}
+
+#btnPay:hover
+{
+    background-color: #f7b95d;
+}
+
+#btnCleanSC
+{
+    padding: 9px 25px;
+    background-color: #d1d1d1;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin: 10px 0px;
+    color: #2e2e33;
+    font-size: 16px;
+    font-weight: 500;
+    float:right;
+}
+
+#btnCleanSC:hover
+{
+    background-color: #c0bdbd;
+}
+
+#GrandTotal
+{
+  text-align: end;
+  margin-right: 15px;
+}
 
   /* ----------------------------------------------- */
   /* ----------------------------------------------- */
