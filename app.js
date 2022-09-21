@@ -93,6 +93,9 @@ const cuerpo = document.getElementById("cuerpo");
 const CartQty = document.getElementById('Cant_inCartText');
 let CartQtyCount=0;
 
+const btnAllStarStats = document.getElementById("btnAllStarStats")
+btnAllStarStats.onclick = () => {window.location.pathname = ('/AllStarStats.html')}
+
 //----------------------------------------------
 //creates the entire table with the cards as contents
 //loads the code to the HTML

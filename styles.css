@@ -483,5 +483,30 @@ linkteam
   margin-right: 15px;
 }
 
-  /* ----------------------------------------------- */
+  /* -------------------API NBA News---------------------------- */
+
+  #cuerpoNews
+  {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0px;
+    align-items:center;
+  }
+
+  .newsCard
+  {
+    background-color: #bdbdbd;
+    padding: 10px;
+    width: 280px;
+    border-radius: 10px;
+    margin: 10px;
+  }
+
+  .newslink
+  {
+    color: #D8442B;
+    text-decoration: none;
+  }
+
   /* ----------------------------------------------- */
