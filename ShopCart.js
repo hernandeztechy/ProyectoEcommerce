@@ -42,7 +42,7 @@ function FillItemsInCart()
             const ItemSC = document.createElement("div")
             
             ItemSC.innerHTML = 
-            `<div id="item" class="item">
+            `<div id="item${id}" class="item">
                 <div class="gridDiv">
                     <div class="columnShopC">
                         <a class="PlayerName">${player}</a>
@@ -93,10 +93,52 @@ function VaciarCarrito()
 
 function RemoveItem(id)
 {
-    alert(`remove item ${id}`)
+    //get index on the value to be remove
+    var index = ShoppingCartObj.findIndex(SC => SC.id == id);
+
+    //get cantidad and price of the card that will be removed
+    const cant = (Object.values(ShoppingCartObj)[index]).cant
+    const precio = Object.values(ShoppingCartObj)[index].precio
+    const totalRemove= cant*precio;
+    
+    //remove item from object
+    var index = ShoppingCartObj.findIndex(SC => SC.id == id); //get index on the value
+    ShoppingCartObj.splice(index,1) //remove index from object
+
+    //recalcular el total
+    const value = (GrandTotalDOM.innerHTML).split('$') //se convierte en array por el split
+    let Grandtotal = value[1] //tomamos solo el numero
+    Grandtotal = Grandtotal - totalRemove
+    GrandTotalDOM.innerHTML = `$${Grandtotal}`;
+
+    //remove item from UI
+    const itemRemove = document.getElementById(`item${id}`)
+    itemRemove.remove()
+
+    //si no quedan elementos entonces se pone el mensaje
+    if(Object.keys(ShoppingCartObj).length<1)
+    {
+        const DivVacio = document.createElement("a")
+            
+        DivVacio.innerHTML = 
+        `<a class="PlayerName">No hay productos en el carrito.</a>`     
+
+        ItemsDIV.appendChild(DivVacio);
+    }
+
+    UpdateShoppingCartStorage()
 }
 
-function UpdateShoppingCart()
+function UpdateCantCard(id)
 {
+    
+}
 
+function UpdateShoppingCartStorage()
+{
+    //actualizar en LocalStorage
+    //1.convertir objeto a string
+    const ShoppingCartString = JSON.stringify(ShoppingCartObj)
+    //2. Store it
+    localStorage.setItem("ShoppingCart", ShoppingCartString)
 }
