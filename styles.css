@@ -167,6 +167,13 @@ linkteam
 #CartIcoDiv
 {
   background-color: #2e2e33;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+#CartIcoDiv:hover
+{
+  color: #b33515;
 }
 
 #Cant_inCart
