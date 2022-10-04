@@ -49,7 +49,7 @@ function FillItemsInCart()
                         <a class="CardYear"> - ${year}</a>
                         <div id="btnDelete">
                             <a class="CardYear">Cantidad: </a>
-                            <input id="CantShpCrt" type="number" value="${cant}">
+                            <input id="Cant${id}" class=CantShpCrt type="number" value="${cant}" min="1">
                             <ion-icon id="TrashIco${id}" name="trash-outline"></ion-icon>
                         </div>
                     </div>
@@ -60,15 +60,19 @@ function FillItemsInCart()
                 <hr>
                 <div class="SubtotalDiv">
                     <a class="CardYear">Subtotal:</a>
-                    <a class="Prices">$${subtotal}</a>
+                    <a id="itemSub${id}" class="Prices">$${subtotal}</a>
                 </div>
             </div>`     
 
             ItemsDIV.appendChild(ItemSC);
 
-            //when clicking on buy button
+            //when clicking on remove button
             const TrashClick = document.getElementById(`TrashIco${id}`)
             TrashClick.onclick = () => RemoveItem(id);
+
+            //when clicking/changing numeric value of quantity
+            const QtyCard = document.getElementById(`Cant${id}`)
+            QtyCard.onchange = () => UpdateCantCard(id, QtyCard.value)
         })
     }
     else //si el carrito esta vacio
@@ -129,9 +133,30 @@ function RemoveItem(id)
     UpdateShoppingCartStorage()
 }
 
-function UpdateCantCard(id)
+function UpdateCantCard(id, qty)
 {
-    
+    //get index on the id to be changed
+    var index = ShoppingCartObj.findIndex(SC => SC.id == id);
+
+    //get cantidad and price of the card that will be removed
+    (Object.values(ShoppingCartObj)[index]).cant = parseInt(qty)
+
+    //update Storage
+    UpdateShoppingCartStorage()
+
+    //recalcular el total y subtotales
+    let total=0
+    for (const iterator of ShoppingCartObj) 
+    {
+        //subtotal
+        let subtotal=iterator.precio*iterator.cant //precio por cantidad
+        const ItemSubtotal = document.getElementById(`itemSub${iterator.id}`)
+        ItemSubtotal.innerHTML = `$${subtotal}`
+
+        //total
+        total=total+subtotal
+    }
+    GrandTotalDOM.innerHTML = `$${total}`;
 }
 
 function UpdateShoppingCartStorage()

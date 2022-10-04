@@ -400,7 +400,7 @@ linkteam
   background-color: transparent;
 }
 
-#CantShpCrt
+.CantShpCrt
 {
   width: 50px;
   font-size: 18px;
@@ -515,5 +515,17 @@ linkteam
     color: #D8442B;
     text-decoration: none;
   }
+
+  /* ---------------------Payment-------------------------- */
+.Payment
+{
+  width: 400px;
+  height: 250px;
+  background-color: white;
+  position: absolute;
+  top:16%;
+  left: 35%;
+  border-radius: 20px;
+}
 
   /* ----------------------------------------------- */
