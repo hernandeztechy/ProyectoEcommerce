@@ -409,7 +409,7 @@ linkteam
   text-align: center;
 }
 
-#TrashIco
+.TrashIco
 {
   color: #4e4e50;
   background-color: transparent;
@@ -432,7 +432,7 @@ linkteam
   border-radius: 10px;
 }
 
-#TrashIco:hover
+.TrashIco:hover
 {
   color:#D8442B;
 }
@@ -519,13 +519,119 @@ linkteam
   /* ---------------------Payment-------------------------- */
 .Payment
 {
-  width: 400px;
-  height: 250px;
-  background-color: white;
-  position: absolute;
-  top:16%;
-  left: 35%;
-  border-radius: 20px;
+  width: 660px;
+  height: 440px;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  display: flex;
+  /*visibility: visible; /*hidden or visible*/
 }
 
+.PayInfo
+{
+  flex: 60%;
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 50px;
+  padding-top: 32px;
+  position: relative;
+}
+
+.txtForm
+{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  border-color: #b33515;
+  width: 100%;
+  margin-bottom: 20px;
+  font: inherit;
+}
+
+#expDate
+{
+  width: 80%;
+}
+
+#ccv
+{
+  width: 100%;
+}
+
+.twocolums
+{
+  display: flex;
+}
+
+#chkoutLeftCl
+{
+  flex: 60%;
+}
+
+#chkoutRightCl
+{
+  flex: 40%;
+}
+
+.lbForm
+{
+  font-size: small;
+}
+
+.rb
+{
+  margin-right: 10px;
+}
+
+.rblabel
+{
+  font: small;
+}
+
+#btnCheckout
+{
+    padding: 9px 25px;
+    width: 300px;
+    background-color: #ff9900;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin: 10px 10px 0px;
+    color: #2e2e33;
+    font-size: 16px;
+    font-weight: 500;
+    float:right;
+}
+
+.TotalDiv
+{
+  flex: 40%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 20px;
+  background-color: #b33515;
+  color: white;
+  text-align: center;
+}
+
+#lbToPay
+{
+  margin-top: 60px;
+}
+
+#CheckoutTotal
+{
+  margin-top: 60px;
+}
+
+#lbError
+{
+  font-size: small;
+  color: #b80202;
+  /*display: none; /*make it non existant-invisible doesnt take space*/
+}
   /* ----------------------------------------------- */

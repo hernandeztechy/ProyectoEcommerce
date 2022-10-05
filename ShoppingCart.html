@@ -20,10 +20,6 @@
         <hr>
     </div>
 
-    <div class="Payment">
-        
-    </div>
-
     <div id="itemsdiv" class="itemsdiv">
         <!-- items will load from ShopCart.js -->
     </div>
@@ -32,6 +28,46 @@
         <p id="GrandTotal" class="Prices">$0.00</p>
         <a class="cta"><button id="btnPay">Proceder al pago</button></a>
         <a class="cta"><button id="btnCleanSC">Vaciar carrito</button></a>
+    </div>
+
+    <div id="Payment" class="Payment">
+        <div class="PayInfo">
+            <form name="payInfo">
+                <label class="lbForm" for="name">Nombre:</label><br>
+                <input class="txtForm" type="text" id="name" name="name"><br>
+
+                <label class="lbForm" for="email">Correo electronico:</label><br>
+                <input class="txtForm" type="text" id="email" name="email" placeholder="mail@mail.com"><br>
+
+                <label class="lbForm" for="cardNum">Numero de tarjeta:</label><br>
+                <input class="txtForm" type="text" id="card" name="card"><br>
+
+                <div class="twocolums">
+                    <div id="chkoutLeftCl">
+                        <label class="lbForm" for="expDate">Fecha de vencimiento:</label>
+                        <input class="txtForm" type="text" id="expDate" name="expDate" placeholder="e.g.: 10/23">
+                    </div>
+                    <div id="chkoutRightCl">
+                        <label class="lbForm" for="ccv">Codigo de seguridad:</label><br>
+                        <input class="txtForm" type="text" id="ccv" name="ccv" placeholder="e.g.: 559"><br>
+                    </div>
+                </div>
+
+                <input type="radio" id="rbPickup" class="rb" name="radio" value="1" checked>
+                <label class="lbForm" for="rbPickup">Recoger en tienda</label><br>
+                <input type="radio" id="rbDelivery" class="rb" name="radio" value="2">
+                <label class="lbForm" for="rbDelivery">Entrega a domicilio - $10</label><br><br>
+                
+                <label class="lbForm">Todos los campos son requeridos para continuar con la compra.</label>
+                
+                <input type="submit" id="btnCheckout" value="Finalizar">
+            </form>
+        </div>
+        <div class="TotalDiv">
+            <p id="lbOrder">Su orden en NBA Cards</p>
+            <h1 id="lbToPay">A pagar</h1>
+            <h1 id="CheckoutTotal">$0.00</h1>
+        </div>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
