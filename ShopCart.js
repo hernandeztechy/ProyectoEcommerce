@@ -243,6 +243,20 @@ function FormValidationCheckout()
     }
     else
     {
-        alert("Pago exitoso")
+        // Toastify({
+        //     text: 'Tu pago fue procesado',
+        //     duration: 6000,
+        //     newWindow: true,
+        //     gravity: "center",
+        //     position: "center",
+        //     stopOnFocus: false,
+        //     close: true,
+        //     style:{
+        //         background: "linear-gradient(to right, #f08573, #e32505)",
+        //     }
+        // }).showToast();
+        alert('Pago Procesado')
+        window.location.pathname = ('/index.html')
     }
+    
 }

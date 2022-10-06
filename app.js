@@ -206,38 +206,38 @@ const AddToCart = (idCard) =>
 }
 
 //registra nombre de usuario en el arreglo
-function RegUsuario()
-{
-    let user = prompt("Antes de iniciar, indique su nombre: ")
-    Usuarios.push(user);
-    console.log(Usuarios)
-}
+// function RegUsuario()
+// {
+//     let user = prompt("Antes de iniciar, indique su nombre: ")
+//     Usuarios.push(user);
+//     console.log(Usuarios)
+// }
 
 //jugadores y su equipo solamente
-function MapPlayerXTeam()
-{
-    console.clear()
-    const ByTeam = NBA_AllStars.map((dato) => 
-    {
-        return{
-            nombre:dato.nombre,
-            team:dato.team
-        }
-    });
-    console.log(ByTeam)
-}
+// function MapPlayerXTeam()
+// {
+//     console.clear()
+//     const ByTeam = NBA_AllStars.map((dato) => 
+//     {
+//         return{
+//             nombre:dato.nombre,
+//             team:dato.team
+//         }
+//     });
+//     console.log(ByTeam)
+// }
 
 //buscar jugador por nombre
-function FindPlayerByName()
-{
-    console.clear()
-    let selecPlayer = prompt("Escriba el nombre del jugador que desea buscar: ")
-    const resultado= NBA_AllStars.find(dato => dato.nombre.includes(selecPlayer))
-    if(resultado!=undefined)
-        console.log(resultado)
-    else
-        console.log("No se encontró al jugador")
-}
+// function FindPlayerByName()
+// {
+//     console.clear()
+//     let selecPlayer = prompt("Escriba el nombre del jugador que desea buscar: ")
+//     const resultado= NBA_AllStars.find(dato => dato.nombre.includes(selecPlayer))
+//     if(resultado!=undefined)
+//         console.log(resultado)
+//     else
+//         console.log("No se encontró al jugador")
+// }
 
 //creates the entire table with the cards as contents
 //receives a object with the NBA data already filtered by the user selection
